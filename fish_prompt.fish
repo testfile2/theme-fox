@@ -20,23 +20,21 @@ function fish_prompt
   set -l red (set_color red)
   set -l cyan (set_color cyan)
   set -l white (set_color white)
+  set -l green (set_color green)
 
   # Configure __fish_git_prompt
   set -g __fish_git_prompt_char_stateseparator ' '
-  set -g __fish_git_prompt_color white
-  set -g __fish_git_prompt_color_flags red
-  set -g __fish_git_prompt_color_prefix cyan
-  set -g __fish_git_prompt_color_suffix cyan
+  set -g __fish_git_prompt_color green
+  set -g __fish_git_prompt_color_flags green
+  set -g __fish_git_prompt_color_prefix red
+  set -g __fish_git_prompt_color_suffix red
   set -g __fish_git_prompt_showdirtystate true
   set -g __fish_git_prompt_showuntrackedfiles true
   set -g __fish_git_prompt_showstashstate true
   set -g __fish_git_prompt_show_informative_status true
   
   # Line 1
-  echo -n $cyan'┌['$white$USER$cyan'@'$white$__fish_prompt_hostname$cyan']'$white'-'$cyan'('$white(prompt_pwd)$cyan')'
-  __fish_git_prompt "-[git://%s]-"
-  echo
-
-  # Line 2
-  echo -n $cyan'└'$__fish_prompt_char $normal
+  echo -n $red'-['$white$USER$red'@'$white$__fish_prompt_hostname$red']'$white'-'$red'('$white(prompt_pwd)$red')'
+  __fish_git_prompt "-[: %s]"
+  echo -n $red-$__fish_prompt_char $normal
 end
